@@ -48,11 +48,15 @@ function generatedBox() {
   $gameWindow.innerHTML = '';
 
   var box = document.createElement('div');
+  var boxSize = generatedRandom(20, 100);
+  var gameSize = $gameWindow.getBoundingClientRect();
+  var maxTop = gameSize.height - boxSize;
+  var maxLeft = gameSize.width - boxSize;
 
-  box.style.width = box.style.height = generatedRandom(20, 100) + 'px';
+  box.style.width = box.style.height = boxSize + 'px';
   box.style.position = 'absolute';
-  box.style.top = generatedRandom(100, 300) + 'px';
-  box.style.left = generatedRandom(100, 300) + 'px';
+  box.style.top = generatedRandom(0, maxTop) + 'px';
+  box.style.left = generatedRandom(0, maxLeft) + 'px';
   box.style.backgroundColor = generatedColor();
   box.style.cursor = 'pointer';
   box.setAttribute('data-box', 'true');
